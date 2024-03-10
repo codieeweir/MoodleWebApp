@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Website</title>
+    <link rel="stylesheet" href="/mystyles.css" />
+  </head>
+  <body>
+    <div class="section">
+      <div class="container">
+        <nav class="navbar">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/logbook">Logbook</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </nav>
+    <div>
+    </div>
+        <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
+        <div class="section">
+            <div class="container uk-flex uk-flex-center uk-flex-middle">
+                <h1 class="title">Log In</h1>
+                <form method="post" action="/login" id="Login" class="login-form">
+                    <!-- Mood details input -->
+                    <div class="uk-width-3-4@s">
+                        <input
+                            class="uk-input"
+                            name="username"
+                            type="text"
+                            placeholder="Username"
+                            required
+                        >
+                    </div>
+                    <div class="uk-width-3-4@s">
+                        <input
+                            class="uk-input"
+                            name="userpass"
+                            type="password"
+                            placeholder="Password"
+                            required
+                        >
+                    </div>
+                    <div class="uk-width-1-4@s">
+                        <div uk-form-custom>
+                            <button class="uk-button uk-button-default uk-button-large">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                    <a href="/signup">Not a Member? Sign up here.</a>
+                </form>
+            </div>
+        </div>
+    </body>
+    </html>

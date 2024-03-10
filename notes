@@ -1,0 +1,19 @@
+ router.post('/login', (req, res) =>{
+    const{ username, userpass } = req.body;
+    const vals = [username, userpass];
+    console.log(vals);
+
+    const checkuserSQL = `SELECT * FROM users WHERE username = ? AND password = ?`;
+
+        conn.query( checkuserSQL, vals, (err, rows) => {
+          if (err) throw err;
+          const numrows = rows.length;
+          console.log(numrows);
+          if (numrows > 0) {
+          console.log(rows);
+          res.redirect('/');
+          } else {
+          res.redirect('/');
+          }
+          });
+          });

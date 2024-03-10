@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Website</title>
+    <link rel="stylesheet" href="/mystyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.7.7/css/uikit.min.css"
+      integrity="sha384-GLhlTQ8iKZtIf6pfe3u7xqotZjF5dy/3evJQbYFRaL2uUjHMEm1umcDJXY5d2JQ2"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="section">
+      <div class="container">
+        <nav class="navbar">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/logbook">Logbook</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </nav>
+        <div>
+          <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
+        </div>
+      </div>
+    </div>
+    <div class="uk-section uk-background-muted">
+      <div class="uk-container">
+        <h2 class="uk-heading-small uk-text-left">My Logbook</h2>
+        <div class="uk-child-width-1-2@s uk-grid-match" uk-grid>
+          <% schedule.forEach((row) => { %> <% var scheduleid = row.ID; %>
+          <div>
+            <a
+              href="/edit/<%= scheduleid %>"
+              class="uk-display-block uk-card uk-card-body uk-card-default uk-link-toggle"
+            >
+              <h3 class="uk-card-title">
+                <span class="uk-link-heading"><%= row.EventTrigger %></span>
+              </h3>
+              <%= row.DateOfLog %>
+            </a>
+          </div>
+          <% }); %>
+        </div>
+        <div class="uk-width-1-4@s">
+          <a
+            href="/logMood"
+            class="uk-button uk-button-default uk-button-large"
+          >
+            Add New Log
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

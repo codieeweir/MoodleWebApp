@@ -1,0 +1,154 @@
+/* mystyles.css */
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.section {
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.navbar {
+    background-color: #378c9b; /* Dark background color for the navbar */
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+nav li a:hover {
+    background-color: #1e4d5f; /* Darker green color on hover */
+}
+
+.uk-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.uk-card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Style the "Add New Log" button */
+.uk-button {
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+
+.logo {
+    max-width: 100%;
+    width: 100%;
+    margin: 20px 0; /* Add margin to separate the image from the navbar and form */
+}
+
+.title {
+    color: #333;
+}
+  
+  form {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+  .uk-width-3-4\@s {
+    flex: 0 0 75%;
+    max-width: 75%;
+    margin-right: 10px;
+  }
+  
+  .uk-width-1-4\@s {
+    flex: 0 0 0 25%;
+    max-width: 25%;
+  }
+  
+  .uk-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    align-items: center;
+  }
+  
+  .uk-button {
+    background-color: #3a5777; /* Green background color for the button */
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .uk-button:hover {
+    background-color: #1f5e5588; /* Darker green color on hover */
+  }
+
+  .uk-range {
+    width: 80%; /* Adjust the width as needed */
+    margin-bottom: 20px; /* Increase or decrease the margin as needed */
+  }
+  
+  .custom-slider-thumb {
+    width: 80%; /* Adjust the width as needed */
+    margin-bottom: 20px; /* Increase or decrease the margin as needed */
+  }
+  
+  /* Set the color for the sliders */
+  .custom-slider-thumb::-webkit-slider-thumb {
+    background-color: #6b3f94; /* Dark purple color */
+  }
+  
+  .custom-slider-thumb::-moz-range-thumb {
+    background-color: #6b3f94; /* Dark purple color */
+  }
+  
+  .custom-slider-thumb::-ms-thumb {
+    background-color: #6b3f94; /* Dark purple color */
+  }
+
+/* Ensure a two-column layout for child elements */
+.uk-child-width-1-2@s {
+  flex-basis: calc(50% - 20px);
+  margin-right: 20px;
+}

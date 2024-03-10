@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Website</title>
+    <link rel="stylesheet" href="/mystyles.css" />
+  </head>
+  <body>
+    <div class="section">
+      <div class="container">
+        <nav class="navbar">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/logbook">Logbook</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </nav>
+        <div>
+          <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
+        </div>
+        <div class="section">
+          <div class="container">
+            <h1 class="title">Log Your Mood</h1>
+            <% for (let row of details) { %> <% var ID = row.ID; %> <% var
+            DateOfLog = row.DateOfLog; %> <% var Enjoyment = row.Enjoyment; %>
+            <% var Sadness = row.Sadness; %> <% var Anger = row.Anger; %> <% var
+            Contempt = row.Contempt; %> <% var Disgust = row.Disgust; %> <% var
+            Fear = row.Fear; %> <% var Surprise = row.Surprise; %> <% var
+            EventTrigger = row.EventTrigger; %> <% const year =
+            DateOfLog.getFullYear(); %> <% const month = (DateOfLog.getMonth() +
+            1).toString().padStart(2, "0"); %> <% const day =
+            DateOfLog.getDate().toString().padStart(2, "0"); %> <% var
+            formattedDate = `${year}-${month}-${day}`; %> <% } %>
+
+            <form
+              method="post"
+              action="/edit/<%= ID %>"
+              class="uk-grid-small"
+              uk-grid
+            >
+              <!-- Enjoyment slider -->
+              <div class="uk-margin">
+                <label class="uk-form-label" for="enjoyment">Enjoyment</label>
+                <div class="uk-form-controls">
+                  <input
+                    class="uk-range custom-slider-thumb"
+                    type="range"
+                    name="enjoyment"
+                    min="1"
+                    max="5"
+                    value="<%=Enjoyment %>"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Fear slider -->
+              <div class="uk-margin">
+                <label class="uk-form-label" for="fear">Fear</label>
+                <div class="uk-form-controls">
+                  <input
+                    class="uk-range"
+                    type="range"
+                    name="fear"
+                    min="1"
+                    max="5"
+                    value="<%=Fear%>"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Contempt slider -->
+              <div class="uk-margin">
+                <label class="uk-form-label" for="contempt">Contempt</label>
+                <div class="uk-form-controls">
+                  <input
+                    class="uk-range"
+                    type="range"
+                    name="contempt"
+                    min="1"
+                    max="5"
+                    value="<%=Contempt %>"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Disgust slider -->
+              <div class="uk-margin">
+                <label class="uk-form-label" for="disgust">Disgust</label>
+                <div class="uk-form-controls">
+                  <input
+                    class="uk-range"
+                    type="range"
+                    name="disgust"
+                    min="1"
+                    max="5"
+                    value="<%=Disgust %>"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Sadness slider -->
+              <div class="uk-margin">
+                <label class="uk-form-label" for="sadness">Sadness</label>
+                <div class="uk-form-controls">
+                  <input
+                    class="uk-range"
+                    type="range"
+                    name="sadness"
+                    min="1"
+                    max="5"
+                    value="<%=Sadness %>"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Anger slider -->
+              <div class="uk-margin">
+                <label class="uk-form-label" for="anger">Anger</label>
+                <div class="uk-form-controls">
+                  <input
+                    class="uk-range"
+                    type="range"
+                    name="anger"
+                    min="1"
+                    max="5"
+                    value="<%=Anger %>"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Surprise slider -->
+              <div class="uk-margin">
+                <label class="uk-form-label" for="surprise">Surprise</label>
+                <div class="custom-slider-thumb::-webkit-slider-thumb">
+                  <input
+                    class="uk-range"
+                    type="range"
+                    name="surprise"
+                    min="1"
+                    max="5"
+                    value="<%=Surprise %>"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Additional details input -->
+              <div class="uk-width-3-4@s uk-margin">
+                <input
+                  class="uk-input"
+                  name="new_details"
+                  type="text"
+                  placeholder="Emotional Event Trigger Details"
+                  value="<%=EventTrigger %>"
+                  required
+                />
+              </div>
+              <div class="uk-width-1-4@s uk-margin">
+                <input
+                  class="uk-input"
+                  name="new_date"
+                  type="datetime"
+                  value="<%= DateOfLog %>"
+                  required
+                />
+              </div>
+              <div class="uk-width-1-4@s uk-margin">
+                <div uk-form-custom>
+                  <button class="uk-button uk-button-primary uk-button-large">
+                    Update
+                  </button>
+                </div>
+              </div>
+              <div uk-form-custom>
+                <button
+                  class="uk-button uk-button-danger uk-button-large"
+                  formaction="/del/<%= ID %>"
+                >
+                  Delete
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add your content here -->
+  </body>
+</html>
