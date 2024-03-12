@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Website</title>
+    <link rel="stylesheet" href="/mystyles.css" />
+  </head>
+  <body>
+    <div class="section">
+      <div class="container">
+        <nav class="navbar">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <% if (loggedin) { %>
+            <li><a href="/logbook">Logbook</a></li>
+            <% } %> <% if (!loggedin) { %>
+            <li><a href="/login">Login</a></li>
+            <% } else { %>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/vizstats">Visuals</a></li>
+            <% } %>
+          </ul>
+        </nav>
+        <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+
+        <% for (let row of details) { %> <% var Enjoyment = row.Enjoyment; %> <%
+        var Sadness = row.Sadness; %> <% var Anger = row.Anger; %> <% var
+        Contempt = row.Contempt; %> <% var Disgust = row.Disgust; %> <% var Fear
+        = row.Fear; %> <% var Surprise = row.Surprise; %> <% } %>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+          const ctx = document.getElementById("myChart");
+          console.log(
+            "<%=Enjoyment %>",
+            "<%=Sadness %>",
+            "<%=Anger %>",
+            "<%=Contempt %>",
+            "<%=Disgust %>",
+            "<%=Fear %>",
+            "<%=Surprise %>"
+          );
+
+          new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: [
+                "Enjoyment",
+                "Sadness",
+                "Anger",
+                "Contempt",
+                "Disgust",
+                "Fear",
+                "Surprise",
+              ],
+              datasets: [
+                {
+                  label: "Average Mood Score",
+                  data: [
+                    "<%=Enjoyment %>",
+                    "<%=Sadness %>",
+                    "<%=Anger %>",
+                    "<%=Contempt %>",
+                    "<%=Disgust %>",
+                    "<%=Fear %>",
+                    "<%=Surprise %>",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true,
+                  Max: 5,
+                },
+              },
+            },
+          });
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

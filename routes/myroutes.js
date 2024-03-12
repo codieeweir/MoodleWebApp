@@ -1,36 +1,32 @@
 const express = require('express');
 const conn = require('../utils/dbconn');
-const controller = require('./../controllers/logbookcontroller');
 const router = express.Router();
 
-//router.get('/', controller.getindex);
-router.get('/', controller.getindex);
-router.get('/login', controller.getLogin);
-router.get('/logout', controller.getLogout);
-router.get('/logbook', controller.getLogbook)
-router.get('/LogMood', controller.getlogmood);
-router.get('/edit/:ID', controller.getEdit);
-router.get('/signup', controller.getSignUp);
-
-//router.post('/edit/:ID', controller.getEdit);
-router.post('/login', controller.postLogin);
-router.post('/logMood', controller.InsertLog);
-router.post('/edit/:ID', controller.postgetEdit);
-router.post('/signup', controller.postSignUp);
-router.post('/del/:ID', controller.postDeleteLog);
+const logbookcontroller = require('./../controllers/logbookcontroller');
+const usercontroller = require('./../controllers/usercontroller');
+const statscontroller = require('./../controllers/statscontroller');
 
 
+router.get('/', usercontroller.getindex);
+router.get('/login', usercontroller.getLogin);
+router.get('/logout', usercontroller.getLogout);
+router.get('/signup', usercontroller.getSignUp);
+router.get('/about', usercontroller.getabout);
+router.get('/contact', usercontroller.getcontact);
 
-router.get('/about', (req, res) => {
+router.get('/logbook', logbookcontroller.getLogbook)
+router.get('/LogMood', logbookcontroller.getlogmood);
+router.get('/edit/:ID', logbookcontroller.getEdit);
 
-      res.render('about')
-    });
+router.get('/vizstats', statscontroller.getStatsVals);
 
-router.get('/contact', (req, res) => {
 
-      res.render('contact')
-    });
+router.post('/signup', usercontroller.postSignUp);
+router.post('/login', usercontroller.postLogin);
 
+router.post('/logMood', logbookcontroller.InsertLog);
+router.post('/edit/:ID', logbookcontroller.postgetEdit);
+router.post('/del/:ID', logbookcontroller.postDeleteLog);
 
 router.get('*', (req, res) => {
       res.send('<h1> Page cannot be found! :( <h2>')

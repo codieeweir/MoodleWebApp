@@ -15,8 +15,14 @@
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
+            <% if (loggedin) { %>
             <li><a href="/logbook">Logbook</a></li>
+            <% } %>
+            <% if (!loggedin) { %>
             <li><a href="/login">Login</a></li>
+            <% } else { %>
+              <li><a href="/logout">Logout</a></li>
+              <% } %>
           </ul>
         </nav>
         <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
