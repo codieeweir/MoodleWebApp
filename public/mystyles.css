@@ -329,6 +329,16 @@ nav li a:hover {
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       background-color: #f9f7fc;
     }
+    .log-box-2{
+      width: 500px; /* Adjust the width of the log boxes */
+      margin: 20px;
+      padding: 15px;
+      border: 2px solid #f9f7fc;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      background-color: #f9f7fc;
+
+    }
     
     .logs-container a {
       text-decoration: none; /* Remove underlines from links */

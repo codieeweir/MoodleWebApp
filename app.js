@@ -8,7 +8,6 @@ const path = require('path');
 
 const app = express();
 
-// Set the view engine to EJS
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({extended: true}));

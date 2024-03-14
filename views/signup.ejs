@@ -6,74 +6,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="/mystyles.css" />
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-    <link rel="stylesheet" type="text/css"
-          href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <%- include('header'); %>
     <div id="stats" class="section stats-section">
-                <h1 class="title">Welcome! Sign Up Below!</h1>
-                <a href="/login">Already have an Account? Log in here.</a>
-                <br /><br />
-                <form method="post" action="/signup" id="Login" class="login-form">
-                    <!-- Mood details input -->
-                    <div class="uk-width-3-4@s">
-                        <input
-                            class="uk-input"
-                            name="firstname"
-                            type="text"
-                            placeholder="First Name"
-                            required
-                        >
-                    </div>
-                    <div class="uk-width-3-4@s">
-                        <input
-                            class="uk-input"
-                            name="surname"
-                            type="text"
-                            placeholder="Surname"
-                            required
-                        >
-                    </div>
-                    <div class="uk-width-3-4@s">
-                        <input
-                            class="uk-input"
-                            name="email"
-                            type="text"
-                            placeholder="Email"
-                            required
-                        >
-                    </div>
-                    <div class="uk-width-3-4@s">
-                        <input
-                            class="uk-input"
-                            name="username"
-                            type="text"
-                            placeholder="Username"
-                            required
-                        >
-                    </div>
-                    <div class="uk-width-3-4@s">
-                        <input
-                            class="uk-input"
-                            name="userpass"
-                            type="text"
-                            placeholder="Password"
-                            required
-                        >
-                    </div>
-                    <div class="uk-width-1-4@s">
-                        <div uk-form-custom>
-                            <button class="uk-button uk-button-default uk-button-large">
-                                Sign Up
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                <a href="/">Back to Home</a>
-            </div>
+      <h1 class="title">Welcome! Sign Up Below!</h1>
+      <a href="/login">Already have an Account? Log in here.</a>
+      <br /><br />
+      <form method="post" action="/signup" id="signup-form" class="login-form">
+        <!-- Mood details input -->
+        <div class="uk-width-3-4@s">
+          <input
+            class="uk-input"
+            name="firstname"
+            type="text"
+            placeholder="First Name"
+            required
+          />
         </div>
-    </body>
-    </html>
+        <div class="uk-width-3-4@s">
+          <input
+            class="uk-input"
+            name="surname"
+            type="text"
+            placeholder="Surname"
+            required
+          />
+        </div>
+        <div class="uk-width-3-4@s">
+          <input
+            class="uk-input"
+            name="email"
+            type="text"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <label class="label" for="username-input"
+          ><span id="message"></span
+        ></label>
+        <div class="uk-width-3-4@s">
+          <input
+            class="uk-input"
+            name="username"
+            type="text"
+            id="username-input"
+            placeholder="Username"
+            required
+          />
+        </div>
+        <div class="uk-width-3-4@s">
+          <label class="label" for="password-input"
+            ><span id="passwordmessage"></span
+          ></label>
+          <input
+            class="uk-input"
+            name="userpass"
+            type="password"
+            id="password-input"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <div class="uk-width-1-4@s">
+          <div uk-form-custom>
+            <button class="uk-button uk-button-default uk-button-large">
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </form>
+      <a href="/">Back to Home</a>
+    </div>
+  </body>
+  <script>
+    $("#signup-form").submit((event) => {
+      const regex = /^[a-zA-Z0-9]+$/;
+      const usernameMsg = "Username Invalid: No Special Characters ";
+      const passwordMsg = "Password must contain at least 5 characters";
+      const username = $("#username-input").val();
+      const password = $("#password-input").val();
+
+      if (!regex.test(username)) {
+        $("#message")
+          .html(usernameMsg)
+          .css("color", "red")
+          .show()
+          .fadeOut(4000);
+        event.preventDefault();
+      }
+
+      if (password.length < 5) {
+        $("#passwordmessage")
+          .html(passwordMsg)
+          .css("color", "red")
+          .show()
+          .fadeOut(4000);
+        event.preventDefault();
+      }
+    });
+  </script>
+</html>

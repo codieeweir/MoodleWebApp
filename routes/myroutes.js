@@ -11,7 +11,6 @@ router.get('/', usercontroller.getindex);
 router.get('/login', usercontroller.getLogin);
 router.get('/logout', usercontroller.getLogout);
 router.get('/signup', usercontroller.getSignUp);
-router.get('/about', usercontroller.getabout);
 router.get('/contact', usercontroller.getcontact);
 
 router.get('/logbook', logbookcontroller.getLogbook)
@@ -19,7 +18,6 @@ router.get('/LogMood', logbookcontroller.getlogmood);
 router.get('/edit/:ID', logbookcontroller.getEdit);
 
 router.get('/vizstats', statscontroller.getStatsVals);
-
 
 router.post('/signup', usercontroller.postSignUp);
 router.post('/login', usercontroller.postLogin);

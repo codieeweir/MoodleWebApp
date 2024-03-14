@@ -16,10 +16,11 @@
       href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"
     />
   </head>
+
   <body>
     <%- include('header'); %>
     <div class="section logbook">
-      <h3 class="title">View you Log for <%= formattedDate %></h3>
+      <h3 class="title">View your Log for <%= formattedDate %></h3>
       <a href="/logbook"> Return to Logbook</a>
     </div>
     <div class="row">
@@ -85,7 +86,6 @@
                 </div>
 
                 <!-- Contempt slider -->
-
                 <div class="slider-item">
                   <label class="uk-form-label" for="contempt">Contempt</label>
                   <input
@@ -101,7 +101,6 @@
                 </div>
 
                 <!-- Disgust slider -->
-
                 <div class="slider-item">
                   <label class="uk-form-label" for="disgust">Disgust</label>
                   <input
@@ -117,7 +116,6 @@
                 </div>
 
                 <!-- Sadness slider -->
-
                 <div class="slider-item">
                   <label class="uk-form-label" for="sadness">Sadness</label>
                   <input
@@ -133,7 +131,6 @@
                 </div>
 
                 <!-- Anger slider -->
-
                 <div class="slider-item">
                   <label class="uk-form-label" for="anger">Anger</label>
                   <input
@@ -149,7 +146,6 @@
                 </div>
 
                 <!-- Surprise slider -->
-
                 <div class="slider-item">
                   <label class="uk-form-label" for="surprise">Surprise</label>
                   <input
@@ -209,15 +205,6 @@
 
     <script>
       const ctx = document.getElementById("logchart");
-      console.log(
-        "<%=Enjoyment %>",
-        "<%=Sadness %>",
-        "<%=Anger %>",
-        "<%=Contempt %>",
-        "<%=Disgust %>",
-        "<%=Fear %>",
-        "<%=Surprise %>"
-      );
 
       new Chart(ctx, {
         type: "pie",
@@ -245,13 +232,13 @@
               ],
               borderWidth: 1,
               backgroundColor: [
-                "rgb(90,164,195)", // Blue
-                "rgb(74,43,86)", // Purple
-                "rgb(37,83,139)", // Green
-                "rgb(152,174,170)", // Yellow
-                "rgb(133,100,86)", // Red
-                "rgb(135, 167, 213)", // Light Blue
-                "rgb(203,156,194)", // Pink
+                "rgb(90,164,195)",
+                "rgb(74,43,86)",
+                "rgb(37,83,139)",
+                "rgb(152,174,170)",
+                "rgb(133,100,86)",
+                "rgb(135, 167, 213)",
+                "rgb(203,156,194)",
               ],
             },
           ],

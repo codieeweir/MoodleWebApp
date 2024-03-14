@@ -18,37 +18,40 @@
   </head>
   <body>
     <%- include('header'); %>
-      <div class="section logbook">
-        <h2 class="title">Welcome to your Logbook!</h2>
-        <p> Here you can add new logs whenever youd like, keep track of your previous logs and update or delete logs aswell</p>
-        <div class = "row" >
+    <div class="section logbook">
+      <h2 class="title">Welcome to your Logbook!</h2>
+      <p>
+        Here you can add new logs whenever you'd like, keep track of your
+        previous logs, and update or delete logs as well.
+      </p>
+      <div class="row">
         <div class="col m5">
           <img src="/imgs/loginimg1.png" class="rounded-corner-image-3" />
         </div>
-        <div class = "col m7">
-        <div class="logs-container">
-          <% const dateformat = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' }; %>
-          <% schedule.forEach((row) => { %> <% var scheduleid = row.ID; %>
-          <a href="/edit/<%= scheduleid %>">
-          <div class="log-box">
-            <% var rawdate = new Date(row.DateOfLog); %>
-            <% var itemdate = new Intl.DateTimeFormat('en-GB', dateformat).format(rawdate); %>
-            <div class="log-date"><strong><%= itemdate %></strong></div>
-            <div class="log-event">
-              <%= row.EventTrigger %>
+        <div class="col m7">
+          <div class="logs-container">
+            <% const dateformat = { weekday: 'long', year: 'numeric', month:
+            'numeric', day: 'numeric' }; %> <% schedule.forEach((row) => { %> <%
+            var scheduleid = row.ID; %>
+            <a href="/edit/<%= scheduleid %>">
+              <div class="log-box">
+                <% var rawdate = new Date(row.DateOfLog); %> <% var itemdate =
+                new Intl.DateTimeFormat('en-GB', dateformat).format(rawdate); %>
+                <div class="log-date"><strong><%= itemdate %></strong></div>
+                <div class="log-event"><%= row.EventTrigger %></div>
+              </div>
+            </a>
+            <% }); %>
           </div>
+          <div class="section logbook">
+            <a
+              href="/logMood"
+              class="uk-button uk-button-default uk-button-large"
+              >Add New Log</a
+            >
           </div>
-          
-          <% }); %>
-        </div>
-      </a>
-        <div class="section logbook">
-          <a href="/logMood" class="uk-button uk-button-default uk-button-large"
-            >Add New Log</a
-          >
         </div>
       </div>
-      </div>
-  </div>
+    </div>
   </body>
 </html>
