@@ -6,18 +6,45 @@ const conn = require('./../utils/dbconn');
             const { isloggedin, UserID} = req.session;
             const session = req.session;
         
-            const selectSQL = `SELECT * FROM logbook where UserID = '${UserID}'`;
-                  conn.query(selectSQL, (err, rows) => {
+            const selectSQL = `SELECT u.id, t.Type FROM logbook l
+                                left join users u on u.id = l.userid
+                                left join logbook_users lu on lu.userid = u.id
+                                left join user_types t on t.id = lu.type_id
+                                where u.ID = '${UserID}'`;
+                  conn.query(selectSQL, (err, vals) => {
                     if (err) {
                       throw err;
                     } else {
-                      res.render('logbook', { schedule: rows, loggedin: isloggedin });
-                }
-                  })
-          };
+                      const type = vals[0].Type;
+                      console.log(type);
+                      if(type =='Admin'){
+                        const AdminSQL = `SELECT * FROM logbook`;
+                        conn.query(AdminSQL,(err,rows) => {
+                          if (err) {
+                            throw err;
+                          } else {
+                            res.render('logbook', { schedule: rows, loggedin: isloggedin })
+                          }
+                        })
+                      } else {
+                        const AdminSQL = `SELECT * FROM logbook where userid = '${UserID}'`;
+                        conn.query(AdminSQL,(err,rows) => {
+                          if (err) {
+                            throw err;
+                          } else {
+                            res.render('logbook', { schedule: rows, loggedin: isloggedin })
+                          }
+                        })
+                      }
+                    }
+                  } )
+                };
 
           exports.getlogmood = (req, res) => {
-            res.render('logmood');
+            const { isloggedin} = req.session;
+            const session = req.session;
+
+            res.render('logmood', {loggedin :isloggedin})
 
           };
 
@@ -39,6 +66,8 @@ const conn = require('./../utils/dbconn');
         };
 
         exports.getEdit = (req, res) => {
+          const {isloggedin} = req.session;
+          const session = req.session;
           const { ID } = req.params;
           console.log(ID);
           const selectSQL = `SELECT * FROM logbook WHERE ID = ${ID}`;
@@ -47,7 +76,7 @@ const conn = require('./../utils/dbconn');
           throw err;
           } else {
           console.log(rows);
-          res.render('updatelog', {details: rows});
+          res.render('updatelog', {details: rows, loggedin: isloggedin});
           }
           });
         }

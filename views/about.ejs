@@ -6,31 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="/mystyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"
+    />
   </head>
   <body>
+    <%- include('header'); %>
     <div class="section">
-      <div class="container">
-        <nav class="navbar">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <% if (loggedin) { %>
-            <li><a href="/logbook">Logbook</a></li>
-            <% } %>
-            <% if (!loggedin) { %>
-            <li><a href="/login">Login</a></li>
-            <% } else { %>
-              <li><a href="/logout">Logout</a></li>
-              <% } %>
-          </ul>
-        </nav>
-        <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
-    <div>
-      <h1>Welcome to Your About section</h1>
-      <p></p>
+      <div>
+        <h1>Welcome to Your About section</h1>
+        <p></p>
+      </div>
     </div>
-
     <!-- Add your content here -->
   </body>
 </html>

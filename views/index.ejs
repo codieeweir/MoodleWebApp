@@ -6,35 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="/mystyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"
+    />
   </head>
   <body>
+    <%- include('header'); %>
     <div class="section">
-      <div class="container">
-        <nav class="navbar">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <% if (loggedin) { %>
-            <li><a href="/logbook">Logbook</a></li>
-            <% } %>
-            <% if (!loggedin) { %>
-            <li><a href="/login">Login</a></li>
-            <% } else { %>
-              <li><a href="/logout">Logout</a></li>
-              <li><a href="/vizstats">Visuals</a></li>
-              <% } %>
-          </ul>
-        </nav>
-        <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
-    <div>
-      <h1>Welcome to Your Website</h1>
-      <p>
-        Learn more about universal emotionals
-        <a href=https://www.paulekman.com/universal-emotions/ target=”_blank”>here</a>.
+      <div class="col m12">
+        <% if (!loggedin) { %>
+        <h1 class="title">Welcome!</h1>
+        <% } else { %>
+        <h1 class="title">Welcome! <%= FirstName %></h1>
+        <% } %>
+        <p>
+          <% if (!loggedin) { %> Ready to start you emotion tracking journey?
+          Sign up <a href="/signup"> here</a> <% } else { %> Ready to Log your
+          mood today? Add <a href="/logmood"> New Log </a> now! <% } %>
         </p>
+        <div class="row">
+          <div class="col m12">
+            <div class="col m9">
+              <div class="section">
+                <p>
+                  Welcome to Moodle, your digital companion in the realm of
+                  emotions, designed to illuminate the path towards emotional
+                  intelligence and well-being. As the esteemed psychologist Paul
+                  Ekman elucidates, emotions serve as a subconscious appraisal,
+                  drawing from our evolutionary heritage and personal history to
+                  guide us through life's significant moments. In essence,
+                  emotions are the silent orchestrators of our responses,
+                  effortlessly preparing us for pivotal events without conscious
+                  deliberation. They emerge spontaneously, transcending barriers
+                  of language, culture, and identity, reflecting the universal
+                  human experience. Within the tapestry of emotions, Moodle
+                  identifies seven timeless pillars, each characterized by
+                  unique signals, physiological responses, and temporal rhythms.
+                  While their duration varies, emotions typically subside within
+                  an hour, serving as fleeting guides in our journey.
+                </p>
+                <p>
+                  Extended emotional states may hint at deeper shifts towards
+                  moods or disorders, underscoring the importance of emotional
+                  self-awareness and regulation. Moodle is your gateway to
+                  understanding and harnessing the power of emotions, empowering
+                  you to cultivate resilience and thrive amidst life's
+                  complexities. Embark on a journey of self-discovery and growth
+                  with Moodle – where emotions become the compass guiding you
+                  towards a brighter tomorrow. Start your exploration today.
+                </p>
+                <p>
+                  Learn more about universal emotions
+                  <a
+                    href="https://www.paulekman.com/universal-emotions/"
+                    target="_blank"
+                    >here</a
+                  >.
+                </p>
+              </div>
+            </div>
+            <div class="col m3">
+              <p>
+                <img src="/imgs/homeimg2.png" class="rounded-corner-image-2" />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <!-- Add your content here -->
+    <script src="https://rawgit.com/outboxcraft/beauter/master/beauter.min.js"></script>
   </body>
 </html>

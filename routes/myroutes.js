@@ -27,6 +27,7 @@ router.post('/login', usercontroller.postLogin);
 router.post('/logMood', logbookcontroller.InsertLog);
 router.post('/edit/:ID', logbookcontroller.postgetEdit);
 router.post('/del/:ID', logbookcontroller.postDeleteLog);
+router.post('/contactform', usercontroller.postcontact);
 
 router.get('*', (req, res) => {
       res.send('<h1> Page cannot be found! :( <h2>')

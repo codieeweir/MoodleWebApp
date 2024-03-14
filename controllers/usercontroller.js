@@ -94,7 +94,7 @@ exports.getSignUp = (req, res) => {
           session.UserID = rows[0].id
           session.isloggedin = true;
           console.log(session);
-          res.redirect('/');
+          res.redirect('/logbook');
           } else {
           res.redirect('/');
           }
@@ -108,13 +108,27 @@ exports.getSignUp = (req, res) => {
             };
 
             exports.getindex = (req, res) => {
-
-                const { isloggedin, UserID} = req.session;
+                const { isloggedin, UserID } = req.session;
                 console.log(`User logged in: ${isloggedin}`);
-                const session = req.session;
-              
-                res.render('index', {loggedin : isloggedin});
-              };
+                console.log(UserID);
+            
+                const selectSQL = `SELECT * FROM users where ID = '${UserID}'`;
+            
+                conn.query(selectSQL, (err, rows) => {
+                    if (err) throw err;
+                    const numrows = rows.length;
+                    if (numrows > 0) {
+                        const FirstName = rows[0].FirstName; // Access the FirstName property of the first row
+                        console.log(FirstName);
+                        console.log('Name returned successfully');
+            
+                        res.render('index', { loggedin: isloggedin, FirstName: FirstName });
+                    } else {
+                        res.render('index', { loggedin: isloggedin });
+                    }
+                });
+            };
+            
 
               exports.getabout = (req, res) => {
 
@@ -130,4 +144,21 @@ exports.getSignUp = (req, res) => {
                 const session = req.session;
 
                 res.render('contact', {loggedin :isloggedin})
+                
               };
+
+          exports.postcontact = (req, res) => {
+          const {email, message, date} = req.body;
+          const vals = [email, message, date];
+          console.log(vals);
+        
+          const InsertSQL = `INSERT INTO emails (email, message, Date) values (?,?,? ) `;
+          conn.query(InsertSQL, vals, (err, rows) => {
+            if (err) {
+              throw err;
+            } else {
+              res.redirect('/contact');
+              console.log('Email Sent Successfully')
+            }
+          });
+              }

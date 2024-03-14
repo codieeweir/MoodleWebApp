@@ -6,56 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="/mystyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"
+    />
   </head>
   <body>
-    <div class="section">
-      <div class="container">
-        <nav class="navbar">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <% if (loggedin) { %>
-            <li><a href="/logbook">Logbook</a></li>
-            <% } %>
-            <% if (!loggedin) { %>
-            <li><a href="/login">Login</a></li>
-            <% } else { %>
-              <li><a href="/logout">Logout</a></li>
-              <% } %>
-          </ul>
-        </nav>
-        <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
+    <%- include('header'); %>
+      <div class="section logbook">
+        <h2 class="title">Welcome to your Logbook!</h2>
+        <p> Here you can add new logs whenever youd like, keep track of your previous logs and update or delete logs aswell</p>
+        <div class = "row" >
+        <div class="col m5">
+          <img src="/imgs/loginimg1.png" class="rounded-corner-image-3" />
         </div>
-      </div>
-    </div>
-    <div class="uk-section uk-background-muted">
-      <div class="uk-container">
-        <h2 class="uk-heading-small uk-text-left">My Logbook</h2>
-        <div class="uk-child-width-1-2@s uk-grid-match" uk-grid>
+        <div class = "col m7">
+        <div class="logs-container">
+          <% const dateformat = { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' }; %>
           <% schedule.forEach((row) => { %> <% var scheduleid = row.ID; %>
-          <div>
-            <a
-              href="/edit/<%= scheduleid %>"
-              class="uk-display-block uk-card uk-card-body uk-card-default uk-link-toggle"
-            >
-              <h3 class="uk-card-title">
-                <span class="uk-link-heading"><%= row.EventTrigger %></span>
-              </h3>
-              <%= row.DateOfLog %>
-            </a>
+          <a href="/edit/<%= scheduleid %>">
+          <div class="log-box">
+            <% var rawdate = new Date(row.DateOfLog); %>
+            <% var itemdate = new Intl.DateTimeFormat('en-GB', dateformat).format(rawdate); %>
+            <div class="log-date"><strong><%= itemdate %></strong></div>
+            <div class="log-event">
+              <%= row.EventTrigger %>
           </div>
+          </div>
+          
           <% }); %>
         </div>
-        <div class="uk-width-1-4@s">
-          <a
-            href="/logMood"
-            class="uk-button uk-button-default uk-button-large"
+      </a>
+        <div class="section logbook">
+          <a href="/logMood" class="uk-button uk-button-default uk-button-large"
+            >Add New Log</a
           >
-            Add New Log
-          </a>
         </div>
       </div>
-    </div>
+      </div>
+  </div>
   </body>
 </html>

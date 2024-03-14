@@ -6,46 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="/mystyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"
+    />
   </head>
   <body>
-    <div class="section">
-      <div class="container">
-        <nav class="navbar">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/logbook">Logbook</a></li>
-            <li><a href="/login">Login</a></li>
-          </ul>
-        </nav>
-        <div>
-          <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
+    <%- include('header'); %>
+    <div class="section logbook">
+      <h3 class="title">View you Log for <%= formattedDate %></h3>
+      <a href="/logbook"> Return to Logbook</a>
+    </div>
+    <div class="row">
+      <div class="section logchart-section">
+        <div class="col m5 with-top">
+          <h3>Your Mood Chart</h3>
+          <div class="chart-container">
+            <canvas class="logchart" id="logchart"></canvas>
+          </div>
         </div>
-        <div class="section">
+        <div class="col m7 with-padding">
           <div class="container">
-            <h1 class="title">Log Your Mood</h1>
-            <% for (let row of details) { %> <% var ID = row.ID; %> <% var
-            DateOfLog = row.DateOfLog; %> <% var Enjoyment = row.Enjoyment; %>
-            <% var Sadness = row.Sadness; %> <% var Anger = row.Anger; %> <% var
-            Contempt = row.Contempt; %> <% var Disgust = row.Disgust; %> <% var
-            Fear = row.Fear; %> <% var Surprise = row.Surprise; %> <% var
-            EventTrigger = row.EventTrigger; %> <% const year =
-            DateOfLog.getFullYear(); %> <% const month = (DateOfLog.getMonth() +
-            1).toString().padStart(2, "0"); %> <% const day =
-            DateOfLog.getDate().toString().padStart(2, "0"); %> <% var
-            formattedDate = `${year}-${month}-${day}`; %> <% } %>
+            <div class="section">
+              <h3 class="title">Update Log for <%= formattedDate %></h3>
 
-            <form
-              method="post"
-              action="/edit/<%= ID %>"
-              class="uk-grid-small"
-              uk-grid
-            >
-              <!-- Enjoyment slider -->
-              <div class="uk-margin">
-                <label class="uk-form-label" for="enjoyment">Enjoyment</label>
-                <div class="uk-form-controls">
+              <% for (let row of details) { %> <% var ID = row.ID; %> <% var
+              DateOfLog = row.DateOfLog; %> <% var Enjoyment = row.Enjoyment; %>
+              <% var Sadness = row.Sadness; %> <% var Anger = row.Anger; %> <%
+              var Contempt = row.Contempt; %> <% var Disgust = row.Disgust; %>
+              <% var Fear = row.Fear; %> <% var Surprise = row.Surprise; %> <%
+              var EventTrigger = row.EventTrigger; %> <% const year =
+              DateOfLog.getFullYear(); %> <% const month = (DateOfLog.getMonth()
+              + 1).toString().padStart(2, "0"); %> <% const day =
+              DateOfLog.getDate().toString().padStart(2, "0"); %> <% var
+              formattedDate = `${year}-${month}-${day}`; %> <% } %>
+
+              <form method="post" action="/edit/<%= ID %>" class="login-form">
+                <datalist id="mood-ticks">
+                  <option value="1">▁</option>
+                  <option value="2">▂</option>
+                  <option value="3">▃</option>
+                  <option value="4">▄</option>
+                  <option value="5">▅</option>
+                </datalist>
+                <!-- Enjoyment slider -->
+                <div class="slider-item">
+                  <label class="uk-form-label" for="enjoyment">Enjoyment</label>
                   <input
                     class="uk-range custom-slider-thumb"
                     type="range"
@@ -53,147 +64,199 @@
                     min="1"
                     max="5"
                     value="<%=Enjoyment %>"
+                    list="mood-tick"
                     required
                   />
                 </div>
-              </div>
 
-              <!-- Fear slider -->
-              <div class="uk-margin">
-                <label class="uk-form-label" for="fear">Fear</label>
-                <div class="uk-form-controls">
+                <!-- Fear slider -->
+                <div class="slider-item">
+                  <label class="uk-form-label" for="fear">Fear</label>
                   <input
-                    class="uk-range"
+                    class="uk-range custom-slider-thumb"
                     type="range"
                     name="fear"
                     min="1"
                     max="5"
                     value="<%=Fear%>"
+                    list="mood-tick"
                     required
                   />
                 </div>
-              </div>
 
-              <!-- Contempt slider -->
-              <div class="uk-margin">
-                <label class="uk-form-label" for="contempt">Contempt</label>
-                <div class="uk-form-controls">
+                <!-- Contempt slider -->
+
+                <div class="slider-item">
+                  <label class="uk-form-label" for="contempt">Contempt</label>
                   <input
-                    class="uk-range"
+                    class="uk-range custom-slider-thumb"
                     type="range"
                     name="contempt"
                     min="1"
                     max="5"
                     value="<%=Contempt %>"
+                    list="mood-tick"
                     required
                   />
                 </div>
-              </div>
 
-              <!-- Disgust slider -->
-              <div class="uk-margin">
-                <label class="uk-form-label" for="disgust">Disgust</label>
-                <div class="uk-form-controls">
+                <!-- Disgust slider -->
+
+                <div class="slider-item">
+                  <label class="uk-form-label" for="disgust">Disgust</label>
                   <input
-                    class="uk-range"
+                    class="uk-range custom-slider-thumb"
                     type="range"
                     name="disgust"
                     min="1"
                     max="5"
                     value="<%=Disgust %>"
+                    list="mood-tick"
                     required
                   />
                 </div>
-              </div>
 
-              <!-- Sadness slider -->
-              <div class="uk-margin">
-                <label class="uk-form-label" for="sadness">Sadness</label>
-                <div class="uk-form-controls">
+                <!-- Sadness slider -->
+
+                <div class="slider-item">
+                  <label class="uk-form-label" for="sadness">Sadness</label>
                   <input
-                    class="uk-range"
+                    class="uk-range custom-slider-thumb"
                     type="range"
                     name="sadness"
                     min="1"
                     max="5"
                     value="<%=Sadness %>"
+                    list="mood-tick"
                     required
                   />
                 </div>
-              </div>
 
-              <!-- Anger slider -->
-              <div class="uk-margin">
-                <label class="uk-form-label" for="anger">Anger</label>
-                <div class="uk-form-controls">
+                <!-- Anger slider -->
+
+                <div class="slider-item">
+                  <label class="uk-form-label" for="anger">Anger</label>
                   <input
-                    class="uk-range"
+                    class="uk-range custom-slider-thumb"
                     type="range"
                     name="anger"
                     min="1"
                     max="5"
                     value="<%=Anger %>"
+                    list="mood-tick"
                     required
                   />
                 </div>
-              </div>
 
-              <!-- Surprise slider -->
-              <div class="uk-margin">
-                <label class="uk-form-label" for="surprise">Surprise</label>
-                <div class="custom-slider-thumb::-webkit-slider-thumb">
+                <!-- Surprise slider -->
+
+                <div class="slider-item">
+                  <label class="uk-form-label" for="surprise">Surprise</label>
                   <input
-                    class="uk-range"
+                    class="uk-range custom-slider-thumb"
                     type="range"
                     name="surprise"
                     min="1"
                     max="5"
                     value="<%=Surprise %>"
+                    list="mood-tick"
                     required
                   />
                 </div>
-              </div>
 
-              <!-- Additional details input -->
-              <div class="uk-width-3-4@s uk-margin">
-                <input
-                  class="uk-input"
-                  name="new_details"
-                  type="text"
-                  placeholder="Emotional Event Trigger Details"
-                  value="<%=EventTrigger %>"
-                  required
-                />
-              </div>
-              <div class="uk-width-1-4@s uk-margin">
-                <input
-                  class="uk-input"
-                  name="new_date"
-                  type="datetime-local"
-                  value="<%= DateOfLog %>"
-                  required
-                />
-              </div>
-              <div class="uk-width-1-4@s uk-margin">
-                <div uk-form-custom>
-                  <button class="uk-button uk-button-primary uk-button-large">
-                    Update
-                  </button>
+                <!-- Additional details input -->
+                <div class="uk-width-3-4@s">
+                  <input
+                    class="uk-input"
+                    name="new_details"
+                    type="text"
+                    value="<%= EventTrigger %>"
+                  />
                 </div>
-              </div>
-              <div uk-form-custom>
-                <button
-                  class="uk-button uk-button-danger uk-button-large"
-                  formaction="/del/<%= ID %>"
-                >
-                  Delete Log
-                </button>
-              </div>
-            </form>
+
+                <div class="uk-width-1-4@s">
+                  <input
+                    class="uk-input"
+                    name="new_date"
+                    value="<%= formattedDate %>"
+                    type="date"
+                    required
+                  />
+                </div>
+                <div class="uk-width-1-4@s">
+                  <div uk-form-custom>
+                    <button class="uk-button">Update</button>
+                  </div>
+                </div>
+                <div class="uk-width-1-4@s">
+                  <div uk-form-custom>
+                    <button
+                      class="uk-button delete"
+                      formaction="/del/<%= ID %>"
+                    >
+                      Delete Log
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Add your content here -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      const ctx = document.getElementById("logchart");
+      console.log(
+        "<%=Enjoyment %>",
+        "<%=Sadness %>",
+        "<%=Anger %>",
+        "<%=Contempt %>",
+        "<%=Disgust %>",
+        "<%=Fear %>",
+        "<%=Surprise %>"
+      );
+
+      new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: [
+            "Enjoyment",
+            "Sadness",
+            "Anger",
+            "Contempt",
+            "Disgust",
+            "Fear",
+            "Surprise",
+          ],
+          datasets: [
+            {
+              label: "Mood Score",
+              data: [
+                "<%=Enjoyment %>",
+                "<%=Sadness %>",
+                "<%=Anger %>",
+                "<%=Contempt %>",
+                "<%=Disgust %>",
+                "<%=Fear %>",
+                "<%=Surprise %>",
+              ],
+              borderWidth: 1,
+              backgroundColor: [
+                "rgb(90,164,195)", // Blue
+                "rgb(74,43,86)", // Purple
+                "rgb(37,83,139)", // Green
+                "rgb(152,174,170)", // Yellow
+                "rgb(133,100,86)", // Red
+                "rgb(135, 167, 213)", // Light Blue
+                "rgb(203,156,194)", // Pink
+              ],
+            },
+          ],
+        },
+      });
+    </script>
   </body>
 </html>

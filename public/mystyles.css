@@ -1,49 +1,164 @@
-/* mystyles.css */
-
-
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .section {
-    text-align: center;
+  text-align: center;
+  width: auto;
+  height: auto;
+  padding: 0 auto;
+  background-color: rgb(244, 241, 248);
+  border-radius: 30px;
+}
+
+.section.logbook {
+  background-color: #fff;
+  text-align: center;
+}
+
+.section.stats-section {
+  background-color: #fff;
+}
+
+.contact-form-section{
+  background-color: #fff;
+}
+
+.logchart-section{
+  padding-left: 50px;
+  height: 30%;
+  background-color: #ddd;
+}
+
+.section.login-section{
+  text-align: center;
+  width: auto;
+  height: auto;
+  padding: 0 auto;
+  border-radius: 30px;
+}
+
+.chart-container{
+  height: 50%;
+}
+
+.contact-form {
+  background-color: #fff;
+  padding-left: 50px;
+  border-radius:  30px;
+  border: 2px solid #5d3e97;
+}
+
+.title {
+  padding-top: 30px;
+}
+
+
+#header .specific-container {
+  max-width: 70%;
+  margin: 0 auto; /* Center the container */
+  padding: 0 auto; /* Adjust padding */
+  height: auto;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 80%;
+  padding: 20px;
+  margin: 20px auto;
 }
 
 .navbar {
-    background-color: #378c9b; /* Dark background color for the navbar */
-    text-align: center;
-    padding: 20px 0;
+  background-color: #2c3565; /* Dark background color for the navbar */
+  text-align: center;
+  padding: 20px 0;
+  border-radius: 30px;
+  margin-top: 20px;
+}
+
+.col.m9.with-padding {
+  padding-left: 30px; /* Adjust the padding as needed */
+  font-weight: bold;
+}
+
+.col.m7.with-padding {
+  margin-top: 20px;
+}
+
+.col.m7.logchart {
+  margin: auto;
+  height: auto;
+  width: 40%;
 }
 
 
+.contact-form-text{
+  text-align: center;
+}
+
+.stats-description{
+  font-size: 16px;
+  padding-top: 20px;
+  background-color: #b3a5d3;
+  border-radius: 30px;
+  border: 2px solid #5d3e97;
+  box-shadow: 0 2px 4px rgba(74, 40, 153, 0.774);
+}
+
+.col.m4.with-top {
+  padding-left: 40px;
+  margin: 20px;
+}
+
+.logchart{
+  height: auto;
+  margin: 20px;
+  max-width: 100%;
+
+}
+
+.col.m3{
+  padding: 0;
+}
+
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 nav li {
-    display: inline-block;
-    margin-right: 10px;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 nav li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    transition: background-color 0.3s;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 18px;
+  transition: background-color 0.3s;
+  font-weight: 20;
 }
 
 nav li a:hover {
-    background-color: #1e4d5f; /* Darker green color on hover */
+  background-color: #9881ce; /* Darker green color on hover */  
+  border-radius: 10px;
+}
+
+.navbar-items {
+  display: flex;
+  justify-content: space-between; /* Align items with space between */
+  padding-left: 20px;
+}
+
+.dropdown{
+  color: #9881ce;
+}
+
+.dropdown-content{
+  color: #5d3e97;
 }
 
 .uk-card {
@@ -71,10 +186,25 @@ nav li a:hover {
 }
 
 
-.logo {
+.rounded-corner-image {
     max-width: 100%;
     width: 100%;
-    margin: 20px 0; /* Add margin to separate the image from the navbar and form */
+    border-radius: 30px;
+    margin-top: 20px;
+}
+
+.rounded-corner-image-2{
+  max-width: 100%;
+  width: 80%;
+  border-radius: 30px;
+}
+
+.rounded-corner-image-3{
+  max-width: 100%;
+  width: 80%;
+  border-radius: 30px;
+  margin-left: 20px;
+  box-shadow: 0 2px 4px rgba(64, 37, 95, 0.822);
 }
 
 .title {
@@ -90,6 +220,7 @@ nav li a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: auto;
 }
   
   .uk-width-3-4\@s {
@@ -101,18 +232,28 @@ nav li a:hover {
   .uk-width-1-4\@s {
     flex: 0 0 0 25%;
     max-width: 25%;
+    padding-top: 20px;
   }
   
   .uk-input {
-    width: 100%;
+    width: 100;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     box-sizing: border-box;
     align-items: center;
   }
   
   .uk-button {
-    background-color: #3a5777; /* Green background color for the button */
+    background-color: #2c3565; /* Green background color for the button */
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .uk-button.delete {
+    background-color: #bb3b90;
     color: white;
     padding: 10px 20px;
     cursor: pointer;
@@ -124,31 +265,79 @@ nav li a:hover {
     background-color: #1f5e5588; /* Darker green color on hover */
   }
 
-  .uk-range {
-    width: 80%; /* Adjust the width as needed */
-    margin-bottom: 20px; /* Increase or decrease the margin as needed */
-  }
-  
-  .custom-slider-thumb {
-    width: 80%; /* Adjust the width as needed */
-    margin-bottom: 20px; /* Increase or decrease the margin as needed */
-  }
-  
-  /* Set the color for the sliders */
-  .custom-slider-thumb::-webkit-slider-thumb {
-    background-color: #6b3f94; /* Dark purple color */
-  }
-  
-  .custom-slider-thumb::-moz-range-thumb {
-    background-color: #6b3f94; /* Dark purple color */
-  }
-  
-  .custom-slider-thumb::-ms-thumb {
-    background-color: #6b3f94; /* Dark purple color */
+  .uk-range.custom-slider-thumb {
+    padding-left: 20px;
   }
 
-/* Ensure a two-column layout for child elements */
-.uk-child-width-1-2@s {
-  flex-basis: calc(50% - 20px);
-  margin-right: 20px;
+  .slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 170;
 }
+
+.slider-item {
+    width: 300px; /* Adjust width as needed */
+    margin-bottom: 10px; /* Add space between sliders */
+    display: flex;
+    align-items: center;
+    color: #392861;
+}
+
+.uk-form-label {
+    width: 100px; /* Adjust width as needed */
+    margin-right: 10px; /* Add space between label and slider */
+}
+
+.uk-range {
+    width: 100%; /* Take up remaining width */
+    color: #9881ce;
+}
+  .flex-container {
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    }
+
+    .flex-item {
+    flex-basis: 20%;
+    padding: 20px;
+    width: 80px;
+    border: thin solid #4d71a8;
+    border-radius: 4px;
+    margin: 10px;
+    background-color: aliceblue;
+    opacity: 0.75;
+    text-align: center;
+    }
+
+    .logs-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .log-box {
+      width: 250px; /* Adjust the width of the log boxes */
+      margin: 20px;
+      padding: 15px;
+      border: 2px solid #f9f7fc;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      background-color: #f9f7fc;
+    }
+    
+    .logs-container a {
+      text-decoration: none; /* Remove underlines from links */
+    }
+
+    .log-event {
+      color: #392861;
+    }
+  
+    .log-date {
+      color: #4718b4;
+    }

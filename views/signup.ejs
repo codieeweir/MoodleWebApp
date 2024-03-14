@@ -6,30 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="/mystyles.css" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" type="text/css"
+          href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css" />
   </head>
   <body>
-    <div class="section">
-      <div class="container">
-        <nav class="navbar">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <% if (loggedin) { %>
-            <li><a href="/logbook">Logbook</a></li>
-            <% } %>
-            <% if (!loggedin) { %>
-            <li><a href="/login">Login</a></li>
-            <% } else { %>
-              <li><a href="/logout">Logout</a></li>
-              <% } %>
-          </ul>
-        </nav>
-        <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
-        <div class="section">
-            <div class="container uk-flex uk-flex-center uk-flex-middle">
+    <%- include('header'); %>
+    <div id="stats" class="section stats-section">
                 <h1 class="title">Welcome! Sign Up Below!</h1>
-                <a href="/login">BACK</a>
+                <a href="/login">Already have an Account? Log in here.</a>
+                <br /><br />
                 <form method="post" action="/signup" id="Login" class="login-form">
                     <!-- Mood details input -->
                     <div class="uk-width-3-4@s">
@@ -85,6 +72,7 @@
                         </div>
                     </div>
                 </form>
+                <a href="/">Back to Home</a>
             </div>
         </div>
     </body>

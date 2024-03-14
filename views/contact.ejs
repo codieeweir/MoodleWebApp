@@ -6,31 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="/mystyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"
+    />
   </head>
   <body>
-    <div class="section">
-      <div class="container">
-        <nav class="navbar">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <% if (loggedin) { %>
-            <li><a href="/logbook">Logbook</a></li>
-            <% } %>
-            <% if (!loggedin) { %>
-            <li><a href="/login">Login</a></li>
-            <% } else { %>
-              <li><a href="/logout">Logout</a></li>
-              <% } %>
-          </ul>
-        </nav>
-        <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
-    <div>
-      <h1>Welcome to Your Contact Page</h1>
-      <p>This is a simple example to get you started with EJS.</p>
+    <%- include('header'); %>
+    <div class="section contact-form-section">
+      <div class="title">
+        <h2>Need to Contact Us?</h2>
+        <p class="Contact-form-text">
+          For any general queries or issues with you account, please dont
+          hestitate to get in contact with use of the form to the right
+        </p>
+      </div>
+      <div class="row">
+        <div class="col m5 contact-from">
+          <img src="/imgs/contactimg2.png" class="rounded-corner-image-2" />
+        </div>
+        <div class="col m7 with-padding">
+          <form method="post" action="/contactform">
+            <fieldset class="contact-form">
+              <div class="col m8">
+                <label for="Email">Enter email</label>
+                <input
+                  class="_full-width"
+                  type="text"
+                  placeholder="test@email.com"
+                  id="Email"
+                  name="email"
+                />
+              </div>
+              <div class="col m12">
+                <label for="Message">Message</label>
+                <textarea
+                  class="_width100"
+                  placeholder="Your message . . . "
+                  id="Message"
+                  name="message"
+                ></textarea>
+              </div>
+              <div class="col m3">
+                <label for="Date">Date of Enquiry</label>
+                <input class="uk-input" type="date" id="Date" name="date" />
+              </div>
+              <div class="col m14">
+                <button class="uk-button">Update</button>
+                <input class="button" type="reset" value="Reset" />
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
     </div>
-
-    <!-- Add your content here -->
   </body>
 </html>

@@ -6,147 +6,182 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="/mystyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"
+    />
   </head>
   <body>
-    <div class="section">
-      <div class="container">
-        <nav class="navbar">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/logbook">Logbook</a></li>
-            <li><a href="/login">Login</a></li>
-          </ul>
-        </nav>
-        <div>
-          <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
-        </div>
-        <div class="section">
-          <div class="container">
-            <h1 class="title">Log Your Mood</h1>
+    <%- include('header'); %>
+    <div class="section logbook">
+      <h1 class="title">Log Your Mood</h1>
+    </div>
+    <div class="row">
+      <div class="col m5 with-top">
+        <h3>Description of levels</h3>
+        <p>
+          Understanding the different levels of mood intensity can provide
+          valuable insights into your emotional experiences. At level 1, you may
+          experience very low mood intensity, indicating that the specific
+          emotion being tracked is barely perceptible or virtually absent. This
+          doesn't necessarily imply a negative mood; rather, it suggests a
+          minimal intensity of the measured emotion.
+          <br /><br />
+          Moving up to level 2, you might experience low mood intensity, where
+          the measured emotion is present but at a subdued level. Level 3
+          represents a neutral mood state, where the intensity of the measured
+          emotion is neither notably high nor low. It's a state of emotional
+          balance, with no strong emotional leanings in either direction.
+          <br /><br />
+          As you progress to level 4, you may experience high mood intensity,
+          indicating a significant presence of the measured emotion, such as
+          happiness or excitement. Finally, at level 5, you may experience very
+          high mood intensity, where the measured emotion is at its peak
+          intensity, signaling an overwhelming presence of the emotion being
+          tracked.
+          <br /><br />
+          Understanding these different levels of intensity can help you gain
+          deeper insights into your emotional experiences and track your mood
+          fluctuations more effectively over time.
+          <br /><br />
+          For example, if you are in a good mood with low sadness, you might log
+          your mood as "Enjoyment: 4, Sadness: 2, Anger: 1, Contempt: 1,
+          Disgust: 1, Fear: 1, Surprise: 3". This indicates that while you're
+          generally feeling happy and content (Enjoyment: 4), you still
+          experience some mild sadness (Sadness: 2) alongside minimal levels of
+          other negative emotions.
+        </p>
+      </div>
+      <div class="col m7 with-padding">
+        <div class="container">
+          <div class="section">
+            <h3 class="title">Tell us how you feel...</h3>
+            <form method="post" action="/logMood" class="login-form">
+              <datalist id="mood-ticks">
+                <option value="1">▁</option>
+                <option value="2">▂</option>
+                <option value="3">▃</option>
+                <option value="4">▄</option>
+                <option value="5">▅</option>
+              </datalist>
 
-            <form method="post" action="/logMood" class="uk-grid-small" uk-grid>
               <!-- Enjoyment slider -->
-              <div class="uk-margin">
+              <div class="slider-item">
                 <label class="uk-form-label" for="enjoyment">Enjoyment</label>
-                <div class="uk-form-controls">
-                  <input
-                    class="uk-range custom-slider-thumb"
-                    type="range"
-                    name="enjoyment"
-                    min="1"
-                    max="5"
-                  />
-                </div>
+                <input
+                  class="uk-range custom-slider-thumb"
+                  type="range"
+                  name="enjoyment"
+                  min="1"
+                  max="5"
+                  list="mood-ticks"
+                />
               </div>
 
               <!-- Fear slider -->
-              <div class="uk-margin">
+              <div class="slider-item">
                 <label class="uk-form-label" for="fear">Fear</label>
-                <div class="uk-form-controls">
-                  <input
-                    class="uk-range"
-                    type="range"
-                    name="fear"
-                    min="1"
-                    max="5"
-                  />
-                </div>
+                <input
+                  class="uk-range custom-slider-thumb"
+                  type="range"
+                  name="fear"
+                  min="1"
+                  max="5"
+                  list="mood-ticks"
+                />
               </div>
 
               <!-- Contempt slider -->
-              <div class="uk-margin">
+
+              <div class="slider-item">
                 <label class="uk-form-label" for="contempt">Contempt</label>
-                <div class="uk-form-controls">
-                  <input
-                    class="uk-range"
-                    type="range"
-                    name="contempt"
-                    min="1"
-                    max="5"
-                  />
-                </div>
+                <input
+                  class="uk-range custom-slider-thumb"
+                  type="range"
+                  name="contempt"
+                  min="1"
+                  max="5"
+                  list="mood-ticks"
+                />
               </div>
 
               <!-- Disgust slider -->
-              <div class="uk-margin">
+
+              <div class="slider-item">
                 <label class="uk-form-label" for="disgust">Disgust</label>
-                <div class="uk-form-controls">
-                  <input
-                    class="uk-range"
-                    type="range"
-                    name="disgust"
-                    min="1"
-                    max="5"
-                  />
-                </div>
+                <input
+                  class="uk-range custom-slider-thumb"
+                  type="range"
+                  name="disgust"
+                  min="1"
+                  max="5"
+                  list="mood-ticks"
+                />
               </div>
 
               <!-- Sadness slider -->
-              <div class="uk-margin">
+
+              <div class="slider-item">
                 <label class="uk-form-label" for="sadness">Sadness</label>
-                <div class="uk-form-controls">
-                  <input
-                    class="uk-range"
-                    type="range"
-                    name="sadness"
-                    min="1"
-                    max="5"
-                  />
-                </div>
+                <input
+                  class="uk-range custom-slider-thumb"
+                  type="range"
+                  name="sadness"
+                  min="1"
+                  max="5"
+                  list="mood-ticks"
+                />
               </div>
 
               <!-- Anger slider -->
-              <div class="uk-margin">
+
+              <div class="slider-item">
                 <label class="uk-form-label" for="anger">Anger</label>
-                <div class="uk-form-controls">
-                  <input
-                    class="uk-range"
-                    type="range"
-                    name="anger"
-                    min="1"
-                    max="5"
-                  />
-                </div>
+                <input
+                  class="uk-range custom-slider-thumb"
+                  type="range"
+                  name="anger"
+                  min="1"
+                  max="5"
+                  list="mood-ticks"
+                />
               </div>
 
               <!-- Surprise slider -->
-              <div class="uk-margin">
+
+              <div class="slider-item">
                 <label class="uk-form-label" for="surprise">Surprise</label>
-                <div class="custom-slider-thumb::-webkit-slider-thumb">
-                  <input
-                    class="uk-range"
-                    type="range"
-                    name="surprise"
-                    min="1"
-                    max="5"
-                  />
-                </div>
+                <input
+                  class="uk-range custom-slider-thumb"
+                  type="range"
+                  name="surprise"
+                  min="1"
+                  max="5"
+                  list="mood-ticks"
+                />
               </div>
 
               <!-- Additional details input -->
-              <div class="uk-width-3-4@s uk-margin">
+              <div class="uk-width-3-4@s">
                 <input
                   class="uk-input"
                   name="new_details"
                   type="text"
-                  placeholder="Emotional Event Trigger Details"
-                  required
+                  placeholder="What caused this?..."
                 />
               </div>
-              <div class="uk-width-1-4@s uk-margin">
-                <input
-                  class="uk-input"
-                  name="new_date"
-                  type="datetime-local"
-                  required
-                />
+              <div class="uk-width-1-4@s">
+                <input class="uk-input" name="new_date" type="date" required />
               </div>
-              <div class="uk-width-1-4@s uk-margin">
+              <div class="uk-width-1-4@s">
                 <div uk-form-custom>
-                  <button class="uk-button uk-button-primary uk-button-large">
-                    Add
+                  <button class="uk-button uk-button-default uk-button-large">
+                    Add Log
                   </button>
                 </div>
               </div>
@@ -155,6 +190,5 @@
         </div>
       </div>
     </div>
-    <!-- Add your content here -->
   </body>
 </html>

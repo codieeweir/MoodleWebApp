@@ -6,88 +6,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="/mystyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"
+    />
   </head>
   <body>
-    <div class="section">
-      <div class="container">
-        <nav class="navbar">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <% if (loggedin) { %>
-            <li><a href="/logbook">Logbook</a></li>
-            <% } %> <% if (!loggedin) { %>
-            <li><a href="/login">Login</a></li>
-            <% } else { %>
-            <li><a href="/logout">Logout</a></li>
-            <li><a href="/vizstats">Visuals</a></li>
-            <% } %>
-          </ul>
-        </nav>
-        <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
-        <div>
-          <canvas id="myChart"></canvas>
+    <%- include('header'); %>
+    <div id="stats" class="section stats-section">
+      <h2>Your Montly Averages</h2>
+
+      <div class="row">
+        <div class="col m4 with-top">
+          <p class="stats-description">
+            In our Stats and Visuals section, we provide comprehensive insights
+            into your emotional journey, offering a deeper understanding of your
+            mood patterns and trends over time. With intuitive graphs and
+            charts, you can visualize the fluctuations in your emotions,
+            empowering you to identify triggers, track progress, and make
+            informed decisions about your well-being. Our data-driven approach
+            enables you to uncover correlations between your activities,
+            environment, and emotional states, fostering self-awareness and
+            personal growth. Whether you're striving for balance, seeking to
+            improve mental resilience, or simply curious about your emotional
+            landscape, our Stats and Visuals section equips you with the tools
+            to navigate your emotional terrain with clarity and confidence.
+          </p>
         </div>
+        <div class="col m7 with-padding">
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
 
-        <% for (let row of details) { %> <% var Enjoyment = row.Enjoyment; %> <%
-        var Sadness = row.Sadness; %> <% var Anger = row.Anger; %> <% var
-        Contempt = row.Contempt; %> <% var Disgust = row.Disgust; %> <% var Fear
-        = row.Fear; %> <% var Surprise = row.Surprise; %> <% } %>
+      <% for (let row of details) { %> <% var Enjoyment = row.Enjoyment; %> <%
+      var Sadness = row.Sadness; %> <% var Anger = row.Anger; %> <% var Contempt
+      = row.Contempt; %> <% var Disgust = row.Disgust; %> <% var Fear =
+      row.Fear; %> <% var Surprise = row.Surprise; %> <% } %>
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <script>
-          const ctx = document.getElementById("myChart");
-          console.log(
-            "<%=Enjoyment %>",
-            "<%=Sadness %>",
-            "<%=Anger %>",
-            "<%=Contempt %>",
-            "<%=Disgust %>",
-            "<%=Fear %>",
-            "<%=Surprise %>"
-          );
+      <script>
+        const ctx = document.getElementById("myChart");
+        console.log(
+          "<%=Enjoyment %>",
+          "<%=Sadness %>",
+          "<%=Anger %>",
+          "<%=Contempt %>",
+          "<%=Disgust %>",
+          "<%=Fear %>",
+          "<%=Surprise %>"
+        );
 
-          new Chart(ctx, {
-            type: "bar",
-            data: {
-              labels: [
-                "Enjoyment",
-                "Sadness",
-                "Anger",
-                "Contempt",
-                "Disgust",
-                "Fear",
-                "Surprise",
-              ],
-              datasets: [
-                {
-                  label: "Average Mood Score",
-                  data: [
-                    "<%=Enjoyment %>",
-                    "<%=Sadness %>",
-                    "<%=Anger %>",
-                    "<%=Contempt %>",
-                    "<%=Disgust %>",
-                    "<%=Fear %>",
-                    "<%=Surprise %>",
-                  ],
-                  borderWidth: 1,
-                },
-              ],
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  Max: 5,
-                },
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: [
+              "Enjoyment",
+              "Sadness",
+              "Anger",
+              "Contempt",
+              "Disgust",
+              "Fear",
+              "Surprise",
+            ],
+            datasets: [
+              {
+                label: "Average Mood Score",
+                data: [
+                  "<%=Enjoyment %>",
+                  "<%=Sadness %>",
+                  "<%=Anger %>",
+                  "<%=Contempt %>",
+                  "<%=Disgust %>",
+                  "<%=Fear %>",
+                  "<%=Surprise %>",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                Max: 5,
               },
             },
-          });
-        </script>
-      </div>
+          },
+        });
+      </script>
     </div>
   </body>
 </html>

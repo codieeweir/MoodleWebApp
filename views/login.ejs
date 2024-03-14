@@ -6,59 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Website</title>
     <link rel="stylesheet" href="/mystyles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://rawgit.com/outboxcraft/beauter/master/beauter.min.css"
+    />
   </head>
   <body>
-    <div class="section">
-      <div class="container">
-        <nav class="navbar">
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <% if (loggedin) { %>
-            <li><a href="/logbook">Logbook</a></li>
-            <% } %>
-            <% if (!loggedin) { %>
-            <li><a href="/login">Login</a></li>
-            <% } else { %>
-              <li><a href="/logout">Logout</a></li>
-              <% } %>
-          </ul>
-        </nav>
-        <img src="/imgs/Moodle2.png" alt="Logo" class="logo" />
-        <div class="section">
-            <div class="container uk-flex uk-flex-center uk-flex-middle">
-                <h1 class="title">Log In</h1>
-                <form method="post" action="/login" id="Login" class="login-form">
-                    <!-- Mood details input -->
-                    <div class="uk-width-3-4@s">
-                        <input
-                            class="uk-input"
-                            name="username"
-                            type="text"
-                            placeholder="Username"
-                            required
-                        >
-                    </div>
-                    <div class="uk-width-3-4@s">
-                        <input
-                            class="uk-input"
-                            name="userpass"
-                            type="password"
-                            placeholder="Password"
-                            required
-                        >
-                    </div>
-                    <div class="uk-width-1-4@s">
-                        <div uk-form-custom>
-                            <button class="uk-button uk-button-default uk-button-large">
-                                Login
-                            </button>
-                        </div>
-                    </div>
-                    <a href="/signup">Not a Member? Sign up here.</a>
-                </form>
+    <%- include('header'); %>
+    <div id="stats" class="section stats-section">
+        <h1 class="title">Log In</h1>
+       
+        <form method="post" action="/login" id="Login" class="login-form">
+          <!-- Mood details input -->
+          <div class="uk-width-3-4@s">
+            <input
+              class="uk-input"
+              name="username"
+              type="text"
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div class="uk-width-3-4@s">
+            <input
+              class="uk-input"
+              name="userpass"
+              type="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="uk-width-1-4@s">
+            <div uk-form-custom>
+              <button class="uk-button uk-button-default uk-button-large">
+                Login
+              </button>
             </div>
-        </div>
-    </body>
-    </html>
+          </div>
+          <a href="/signup">Not a Member? Sign up here.</a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
